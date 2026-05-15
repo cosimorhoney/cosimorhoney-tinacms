@@ -1,0 +1,75 @@
+{
+  "seo": {
+    "title": "Cosimo Rhoney Productions",
+    "description": "Filmmaker | Photographer | Musician",
+    "siteOwner": "Cosimo Rhoney Productions"
+  },
+  "nav": [
+    {
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "title": "Blog",
+      "link": "/blog"
+    },
+    {
+      "title": "About",
+      "link": "/about"
+    }
+  ],
+  "contactLinks": [
+    {
+      "title": "Twitter",
+      "link": "https://x.com/tinacms",
+      "icon": "TbBrandTwitter"
+    },
+    {
+      "title": "Docs",
+      "link": "https://tina.io/docs",
+      "icon": "TbBook2"
+    },
+    {
+      "title": "GitHub",
+      "link": "https://github.com/tinacms/tinacms",
+      "icon": "TbBrandGithub"
+    }
+  ],
+  "siteLogo": "/uploads/graphics/CRP-Logo.png",
+  "siteTitle": "Cosimo Rhoney Productions",
+  "siteTagline": "Filmmaker | Photographer | Musician",
+  "siteDescription": "",
+  "navigation": [
+    {
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "title": "About",
+      "link": "#"
+    }
+  ],
+  "footerLinks": [
+    {
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "title": "About",
+      "link": "#"
+    }
+  ],
+  "html": "",
+  "social": [
+    {
+      "title": "LinkedIn",
+      "link": "https://linkedin.com/in/cosimorhoney",
+      "icon": "TbBrandLinkedinFilled"
+    },
+    {
+      "title": "YouTube",
+      "link": "https://www.youtube.com/@cosimorhoneyproductions",
+      "icon": "TbBrandYoutubeFilled"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import config from "../content/config/config.json";
+import IconLink from "./react/IconLink";
+---
+
+<header>
+	<nav>
+		<a href="/" class="header-group">
+			<img src=`${config.siteLogo}` 
+			     alt=`${config.siteTitle} logo` 
+					 width="72" 
+					 height="72"
+					 class="header-group-logo" />
+			<div class="header-group-text">
+				<h2>{config.siteTitle}</h2>
+				<!-- <h3>{config.siteTagline}</h3> -->
+			</div>
+	  </a>
+		<div class="header-links" tabindex="1" aria-label="Navigation Menu">
+			{
+				config.navigation.map((nav) => (
+					<HeaderLink href={nav.link} className={nav.classes}>
+						{nav.title}
+					</HeaderLink>
+				))
+			}
+		</div>
+	</nav>
+</header>
+<style>
+
+</style>

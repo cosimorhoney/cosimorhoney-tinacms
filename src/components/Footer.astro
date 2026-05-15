@@ -1,0 +1,134 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import config from "../content/config/config.json";
+import IconLink from "./react/IconLink";
+const today = new Date();
+---
+<footer class="footer">
+	<div class="footer-content">
+		<div class="footer-branding">
+			<a href="/" class="footer-brand">
+				<img src=`${config.siteLogo}` 
+						alt=`${config.siteTitle} logo` 
+						width="72" 
+						height="72"
+						class="footer-brand-logo" />
+				<div class="footer-brand-text">
+					<h2>{config.siteTitle}</h2>
+					<h3>{config.siteTagline}</h3>
+				</div>
+			</a>
+			<div class="social-links">
+				{
+					config?.social?.map((url) => {
+						return (
+							<IconLink {...url} />
+						); 
+					})
+				}
+			</div>
+		</div>
+		<div class="footer-links">
+			{
+				config.footerLinks.map((link) => (
+					<HeaderLink href={link.link} className={link.classes}>
+						{link.title}
+					</HeaderLink>
+				))
+			}
+		</div>
+		<div class="footer-html" set:html={config.html} />
+	</div>
+	<section class="copyright-footer">
+		<div class="copyright">
+			&copy; {today.getFullYear()}
+			{config.seo.siteOwner}. All&nbsp;rights&nbsp;reserved.
+		</div>
+		<div class="credit">
+			Website&nbsp;by <a href="https://joerhoney.com">joerhoney.com</a>
+		</div>
+	</section>
+</footer>
+
+<script>
+  function initSlideshows() {
+    const slideshows = document.querySelectorAll('.gallery.slideshow');
+    
+    slideshows.forEach((gallery) => {
+      if (gallery.dataset.slideshowInit) return; // prevent duplicate intervals
+      gallery.dataset.slideshowInit = 'true';
+      
+      const figures = gallery.querySelectorAll('.gallery-grid figure');
+      if (figures.length <= 1) return;
+      
+      const duration = parseInt(gallery.dataset.slideDuration || '5000');
+      let currentIndex = 0;
+      
+      setInterval(() => {
+        figures[currentIndex].classList.remove('current');
+        currentIndex = (currentIndex + 1) % figures.length;
+        figures[currentIndex].classList.add('current');
+      }, duration);
+    });
+  }
+
+  function initSlidetexts() {
+    const slidetexts = document.querySelectorAll('.slidetext');
+    
+    slidetexts.forEach((gallery) => {
+      if (gallery.dataset.slidetextInit) return; // prevent duplicate intervals
+      gallery.dataset.slidetextInit = 'true';
+      
+      const words = gallery.querySelectorAll('i');
+      if (words.length <= 1) return;
+      
+      const duration = parseInt(gallery.dataset.slideDuration || '3333');
+      let revealIndex = 0;
+      
+      setInterval(() => {
+        words[revealIndex].classList.remove('reveal');
+        revealIndex = (revealIndex + 1) % words.length;
+        words[revealIndex].classList.add('reveal');
+      }, duration);
+    });
+  }
+
+  function init() {
+    initSlideshows();
+    initSlidetexts();
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slidetexts = document.querySelectorAll('.slidetext');
+    slidetexts.forEach((span) => {
+      let revealIndex = 0;
+      const words = span.innerText.split(',');
+      span.innerText = '';
+      words.forEach((str,index) => {
+        const word = document.createElement('span');
+        word.classList.add('slidetext-word');
+				if(index == 0){
+          word.classList.add('reveal');
+        }
+        word.innerText = str.trimStart();
+        span.append(word);
+      });
+      const slidetextWords = span.querySelectorAll('.slidetext-word');
+
+      setInterval(() => {
+        slidetextWords[revealIndex].classList.remove('reveal');
+        revealIndex = (revealIndex + 1) % slidetextWords.length;
+        slidetextWords[revealIndex].classList.add('reveal');
+      }, '3333');
+    });
+  });
+</script> -->
+
+<style>
+
+</style>

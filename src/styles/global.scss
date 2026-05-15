@@ -1,0 +1,593 @@
+@font-face {
+  src:
+    local("Simo"),
+    url("/uploads/fonts/simo.ttf") format("truetype");
+  font-family: Simo;
+}
+
+:root {
+  --color-app: #110c09;
+  --color-bg: #110c09;
+  --color-left: #462609;
+  --color-right: #122254;
+  --color-text: #fff;
+  --color-link: #7fd2ff;
+  --color-link-hover: #fff;
+  --color-dark: #110c09;
+  --page-column: 40px minmax(200px, 1fr) 40px;
+  --font-theme: Simo;
+  --font-base: "Courier New", Courier, monospace;
+  --gap: 50px;
+  --padding: 40px;
+  line-height: 1.5;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --page-column: 1fr 620px 1fr;
+  }
+}
+
+body {
+  position: relative;
+  margin: 0;
+  background: var(--color-app);
+  overflow-x: hidden;
+  color: var(--color-text);
+  font-family: var(--font-base);
+}
+
+body:before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-app) 50vw, transparent);
+  content: "";
+}
+
+/* ─── Header / Nav ─────────────────────────────────────── */
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  nav {
+    --color-link: #fff;
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: var(--gap);
+    padding: var(--padding);
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: -60px;
+      left: 0;
+      opacity: 1; /* fallback: always visible if @supports doesn't match */
+      z-index: -1;
+      backdrop-filter: blur(6px);
+      mask-image: linear-gradient(
+        to bottom,
+        #000000ff,
+        #000000dd 25%,
+        #00000099 50%,
+        #00000033 75%,
+        transparent
+      );
+      background: #110c09cc;
+      pointer-events: none;
+      content: "";
+    }
+    @supports (animation-timeline: scroll()) {
+      &::before {
+        opacity: 0;
+        animation-timeline: scroll();
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-name: nav-animation;
+        animation-range: 0px 20vw;
+      }
+    }
+  }
+}
+
+@keyframes nav-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+header .header-group {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+header .header-group-logo {
+  width: 72px;
+  height: auto;
+}
+
+header .header-group-text h2 {
+  margin: 0;
+  margin: 3px 2px 0;
+  width: 100px;
+  overflow: hidden;
+  color: white;
+  font-size: 11px !important;
+  line-height: 0.89;
+  font-family: var(--font-theme);
+  text-box-trim: trim-both;
+  text-transform: uppercase;
+  @supports (animation-timeline: scroll()) {
+    opacity: 0;
+    animation-timeline: scroll();
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-name: drawer-animation;
+    animation-range: 0px 30vw;
+  }
+}
+
+@keyframes drawer-animation {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+header .header-links {
+  display: flex;
+  gap: var(--gap);
+  margin-left: auto;
+}
+
+header .header-links a {
+  color: var(--color-text);
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+header .header-links a:hover,
+header .header-links a:focus {
+}
+header .header-links a.active {
+  opacity: 0.7;
+}
+
+/* ─── Main ──────────────────────────────────────────────── */
+
+main {
+  display: grid;
+  position: relative;
+  grid-template-columns: var(--page-column);
+  z-index: 0;
+}
+
+main:before {
+  inset: clamp(386px, 53vw, 53vw) 0 0;
+  background: var(--color-app)
+    linear-gradient(
+      90deg,
+      var(--color-left),
+      var(--color-app),
+      var(--color-right)
+    )
+    no-repeat;
+}
+
+main:after,
+main:before {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+  content: "";
+}
+
+main:after {
+  inset: 0;
+  background: transparent
+    linear-gradient(
+      to bottom,
+      transparent clamp(176px, 27vw, 27vw),
+      var(--color-app) clamp(386px, 53vw, 53vw),
+      transparent
+    );
+}
+
+main > * {
+  grid-column: 2 / 3;
+}
+
+/* ─── Sections ──────────────────────────────────────────── */
+
+section,
+.section-wrapper {
+  z-index: 10;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+section.section-wrapper.max-width-full {
+  grid-column: 1 / -1;
+}
+
+/* ─── Hero (section-wrapper with background video) ──────── */
+
+.section-wrapper:has(.hero) {
+  display: grid;
+  position: static;
+  grid-template-columns: var(--page-column);
+  grid-column: 1 / -1;
+  align-content: end;
+  padding: 0;
+  width: 100%;
+  min-height: clamp(288px, 40vw, 40vw);
+  .hero-content h1 {
+    margin: 0;
+  }
+}
+
+.section-wrapper:has(.hero) > video.background-video {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  width: clamp(720px, 100%, 100%);
+  height: auto;
+  object-position: center;
+}
+
+.section-wrapper:has(.hero)::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-app) clamp(386.5px, 53vw, 53vw)
+  );
+  pointer-events: none;
+  content: "";
+}
+
+.section-wrapper:has(.hero) > * {
+  position: relative;
+  grid-column: 2 / 3;
+  z-index: 1;
+}
+
+/* ─── Typography ────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+ul {
+  margin: 0 0 1.3em;
+}
+
+li {
+  margin: 0 0 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-theme);
+  text-transform: uppercase;
+}
+
+.title-lg {
+  font-size: 24px;
+}
+.title-md {
+  opacity: 0.8;
+  font-size: 20px;
+}
+.title-sm {
+  opacity: 0.6;
+  font-size: 16px;
+}
+
+.flush-next {
+  margin-bottom: 0;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* ─── Links ─────────────────────────────────────────────── */
+
+a:not([class]) {
+  transition: all 0.3s ease;
+  color: var(--color-link);
+  text-underline-offset: 0.125em;
+  text-shadow: 0 0 2rem #ffffff00;
+}
+
+a:not([class]):hover,
+a:not([class]):focus,
+a:not([class]):active {
+  color: var(--color-link-hover);
+  text-shadow: 0 0 2rem #ffffffff;
+}
+
+/* ─── Misc ──────────────────────────────────────────────── */
+
+iframe {
+  width: 100%;
+}
+
+.aspect-16-9 {
+  aspect-ratio: 16 / 9;
+}
+.aspect-21-9 {
+  aspect-ratio: 21 / 9;
+}
+.aspect-32-9 {
+  aspect-ratio: 32 / 9;
+}
+
+/* ─── Gallery ───────────────────────────────────────────── */
+
+.gallery-grid {
+  --gap: 50px;
+  --cols: 5;
+  --calc: calc((100% - var(--gap) * (var(--cols) - 1)) / var(--cols));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--gap);
+  margin: 0 50px;
+}
+
+.gallery-grid > * {
+  flex: 1 1 var(--calc);
+  margin: 0;
+  padding: 0;
+}
+
+.gallery-grid figure a {
+  display: block;
+}
+
+.gallery-grid figure img {
+  display: block;
+  margin: 0;
+  width: 100%;
+}
+
+@media (max-width: 1920px) {
+  .gallery-grid {
+    --cols: 3;
+    --calc: calc((100% - var(--gap) * (var(--cols) - 1)) / var(--cols));
+    flex-wrap: wrap;
+  }
+  .gallery-row > * {
+    flex: 1 1 var(--calc);
+  }
+}
+
+@media (max-width: 1200px) {
+  .gallery-grid {
+    --cols: 2;
+  }
+}
+
+@media (max-width: 960px) {
+  .gallery-grid > * {
+    flex: 1 1 auto;
+  }
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+
+footer {
+  --color-link: #fff;
+  position: relative;
+  z-index: 15;
+  background-color: var(--color-app);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #fff;
+  &::before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    mix-blend-mode: lighten;
+    background: transparent
+      linear-gradient(45deg, var(--color-left), transparent 50%) no-repeat;
+    height: 100vw;
+    pointer-events: none;
+    content: "";
+  }
+  &::after {
+    position: absolute;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background: transparent
+      linear-gradient(316deg, var(--color-right), transparent 50%) no-repeat;
+    height: 100vw;
+    pointer-events: none;
+    content: "";
+  }
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  gap: 40px 0;
+}
+
+@media (min-width: 700px) {
+  .footer-content {
+    grid-template-columns: 1fr 620px 1fr;
+  }
+}
+
+.footer-content > * {
+  grid-column: 2 / 3;
+  text-align: center;
+}
+
+.footer-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-text);
+  line-height: 1;
+  text-box-trim: trim-both;
+  text-align: left;
+  text-decoration: none;
+}
+
+.footer-brand-logo {
+  width: 72px;
+  height: auto;
+}
+
+.footer-brand-text h2 {
+  margin: 0;
+  font-size: 14px;
+  font-family: var(--font-theme);
+  text-transform: uppercase;
+}
+
+.footer-brand-text h3 {
+  opacity: 0.7;
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-links a {
+  display: flex;
+  position: relative;
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
+  padding: 0;
+  color: var(--color-text);
+  line-height: 0;
+  &::before {
+    position: absolute;
+    opacity: 0;
+    filter: blur(1rem);
+    transition: all 0.3s ease-in-out;
+    inset: 0;
+    border-radius: 0.5rem;
+    background: white;
+    content: "";
+  }
+  &:focus::before,
+  &:hover::before {
+    opacity: 0.7;
+  }
+}
+
+.social-links a:hover {
+  opacity: 1;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 24px;
+}
+
+.footer-links a {
+  color: var(--color-text);
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  text-shadow: 0 0 2rem var(--color-link-hover);
+}
+
+.footer-links a.active {
+  opacity: 0.7;
+}
+
+.footer-html {
+  font-size: 14px;
+}
+
+.copyright-footer {
+  display: flex;
+  grid-column: 2 / 3;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+}
+
+.copyright,
+.credit {
+  opacity: 0.6;
+  font-size: 13px;
+}
+
+.credit a {
+  color: inherit;
+}
+
+.credit a:hover {
+  opacity: 1;
+  color: var(--color-link-hover);
+}
+
+/* ─── Utils ───────────────────────────────────────────────── */
+
+.sr-only {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  white-space: nowrap;
+}

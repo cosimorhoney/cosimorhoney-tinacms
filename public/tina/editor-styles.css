@@ -1,0 +1,219 @@
+/* tina/editor-styles.css */
+textarea[name*="html"],
+textarea[name*="text"] {
+  background: #1e1e1e !important;
+  color: #ddd !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  font-family:
+    "Monaco", "Menlo", "Ubuntu Mono", "Consolas", monospace !important;
+}
+
+label[for*="html"],
+label[for*="text"] {
+  /* your label styles */
+}
+
+.flex.items-baseline {
+  border-right: 1px solid rgb(225 221 236 / var(--tw-border-opacity, 1));
+  background: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Force dark mode for TinaCMS UI */
+  html,
+  body,
+  #root {
+    color-scheme: dark;
+    --tina-color-primary-light: #0574e4;
+    --tina-color-primary: #0084ff;
+    --tina-color-primary-dark: #2296fe;
+    --tina-color-error-light: #dc4419;
+    --tina-color-error: #ec4815;
+    --tina-color-error-dark: #eb6337;
+    --tina-color-warning-light: #d3ba38;
+    --tina-color-warning: #e9d050;
+    --tina-color-warning-dark: #f5e06e;
+    --tina-color-success-light: #249a21;
+    --tina-color-success: #3cad3a;
+    --tina-color-success-dark: #57c355;
+    --tina-color-grey-10: #ffffff !important;
+    --tina-color-grey-9: #f6f6f6 !important;
+    --tina-color-grey-8: #edecf3 !important;
+    --tina-color-grey-7: #e1e1e1 !important;
+    --tina-color-grey-6: #b2b2b2 !important;
+    --tina-color-grey-5: #909090 !important;
+    --tina-color-grey-4: #7e7e7e !important;
+    --tina-color-grey-3: #515151 !important;
+    --tina-color-grey-2: #434343 !important;
+    --tina-color-grey-1: #363636 !important;
+    --tina-color-grey-0: #272727 !important;
+    /* background: var(--tina-color-grey-1); */
+    /* color: var(--tina-color-grey-10); */
+  }
+  body.tina-tailwind {
+    color: #fff;
+  }
+  div .h-dvh {
+    background: #0e050e var(--tina-color-grey-0);
+  }
+  div .h-dvh.pointer-events-none {
+    background: unset;
+  }
+  div[style*="rgb(246, 246, 249);"] {
+    background: var(--tina-color-grey-1) !important;
+  }
+  .text-gray-400 {
+    color: var(--tina-color-grey-5);
+  }
+  .text-gray-500 {
+    color: var(--tina-color-grey-7);
+  }
+  .text-gray-600:not(.tina-prose) {
+    color: var(--tina-color-grey-7);
+  }
+  .text-gray-700 {
+    color: var(--tina-color-grey-7);
+  }
+  .text-gray-800 {
+    color: var(--tina-color-grey-8);
+  }
+  .text-gray-900 {
+    color: var(--tina-color-grey-9);
+  }
+  .text-\[\#1D4ED8\] {
+    color: #9eceff;
+  }
+  .text-amber-700 {
+    color: #fef3c7;
+  }
+  .text-yellow-700 {
+    color: #dc8200;
+  }
+  .text-xs.font-semibold.flex-1.text-ellipsis {
+    color: var(--tina-color-grey-9);
+  }
+  .text-xs.font-semibold.flex-1.text-ellipsis:hover > span,
+  .hover\:text-blue-600:hover {
+    color: #9eceff;
+  }
+  .text-orange-500 {
+    color: var(--tina-color-grey-3);
+  }
+  .hover\:bg-gray-100:hover {
+    background-color: var(--tina-color-grey-2);
+  }
+  .hover\:bg-gray-50:hover {
+    background-color: var(--tina-color-grey-2);
+  }
+  .focus\:text-gray-900:focus {
+    color: var(--tina-color-grey-9);
+  }
+  .bg-gray-50\/50 {
+    background-color: var(--tina-color-grey-1);
+  }
+  .bg-white:not(.tina-prose) {
+    background-color: var(--tina-color-grey-1);
+  }
+  .hover\:bg-white:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(70 70 70 / var(--tw-bg-opacity, 1));
+  }
+  .bg-gray-50 {
+    background-color: var(--tina-color-grey-1);
+  }
+  .bg-gray-100 {
+    background-color: var(--tina-color-grey-1);
+  }
+  .bg-amber-100 {
+    background-color: #544100;
+  }
+  img[style*="background-image: linear-gradient(45deg, rgb(238, 238, 238) 25%, transparent 25%),"] {
+    background-image:
+      linear-gradient(45deg, #565165 25%, transparent 25%),
+      linear-gradient(-45deg, #565165 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #565165 75%),
+      linear-gradient(-45deg, transparent 75%, #565165 75%) !important;
+  }
+  .border-gray-100 {
+    border-color: var(--tina-color-grey-3);
+  }
+  .border-gray-200 {
+    border-color: var(--tina-color-grey-3);
+  }
+  .hover\:bg-gray-50\/50:hover {
+    background-color: var(--tina-color-grey-0);
+  }
+  .border-gray-50 {
+    border-color: var(--tina-color-grey-3);
+  }
+  .border-gray-150 {
+    border-color: var(--tina-color-grey-3);
+  }
+  .focus\:border-blue-500:focus {
+    --tw-border-opacity: 1;
+    border-color: rgb(0 132 255 / var(--tw-border-opacity, 1));
+  }
+  textarea {
+    background-color: var(--tina-color-grey-0);
+  }
+  input[type="text"].bg-white {
+    background-color: var(--tina-color-grey-0);
+  }
+  .to-yellow-100 {
+    --tw-gradient-to: #4d491f var(--tw-gradient-to-position);
+  }
+  .from-yellow-50 {
+    --tw-gradient-from: #3f3c19 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgba(0, 0, 0, 0.85) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+  .to-gray-50 {
+    --tw-gradient-to: #181718 var(--tw-gradient-to-position);
+  }
+  .from-gray-50\/50 {
+    --tw-gradient-from: rgba(34, 33, 34, 0.5) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgba(41, 40, 41, 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+  .from-white {
+    --tw-gradient-from: #1b1423 var(--tw-gradient-from-position);
+    --tw-gradient-to: rgba(7, 7, 7, 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+  .bg-blue-500 {
+    background-color: rgba(129, 186, 255, 0.772);
+  }
+  .text-blue-600 {
+    color: #9eceff;
+  }
+  .text-black {
+    color: white;
+  }
+  .bg-blue-100\/50 {
+    background-color: rgba(0, 110, 219, 0.5);
+  }
+  .flex.items-baseline {
+    border-right: 1px solid var(--tw-color-grey-3);
+    background: var(--tina-color-grey-0);
+  }
+  /* Drag & drop fields */
+  .text-center.bg-gray-100.text-gray-300.font-normal {
+    background-color: var(--tina-color-grey-0);
+  }
+  /* Icons */
+  svg.w-5.h-auto.opacity-30.transition-all.ease-out.duration-150 {
+    fill: white;
+  }
+  /* "View in rich-text editor" button */
+  .bg-white.cursor-pointer.border-gray-200.hover\:text-white.hover\:bg-blue-500 {
+    color: #fff;
+  }
+  .bg-white.cursor-pointer.border-gray-200.hover\:text-white.hover\:bg-blue-500:hover {
+    background-color: #444;
+  }
+  /* Tag picker tooltip popup */
+  div[role="toolbar"].bg-popover {
+    background: #363636;
+  }
+}

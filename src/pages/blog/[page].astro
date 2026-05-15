@@ -1,0 +1,79 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import config from '../../content/config/config.json';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import '../../styles/blog.scss';
+
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+  return paginate(posts, { pageSize: 12 });
+}
+
+const { page } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+<!--
+joerhoney.com        ▟███▄▄
+                    ▟█████▛
+     ▟███▄▄         ▀▀███▛
+    ▟█████▛
+    ▀▀███▛       ▟███▄▄
+                ▟█████▛
+               ▟█████▛
+ ▟███▄▄       ▟█████▛
+▟█████▛      ▟█████▛
+▀▀███▛      ▟█████▛
+           ▟█████▛
+    ▄▄▂▂▂▄██████▛ 
+   ████████████▘
+  ▝▜███████▛▀▘
+      ▔▔▔       TM 
+-->
+  <head>
+    <BaseHead title={config.seo.title} description={config.seo.description} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="blog-hero"><h1 class="blog-heading"><span class="blog-title">Blog</span></h1></div>
+      <section>
+        <ul class="blog-list">
+          {
+            page.data.map((post) => (
+              <li class="blog-item">
+                <a class="blog-link" href={`/blog/${post.id}/`}>
+                  <div class="blog-img" data-src={post.data.heroImage}>
+                    <img width={360} height={360} src={post.data.heroImage} alt={post.data.heroImageAlt} />
+                  </div>
+									<div class="summary">
+										<h4 class="title">{post.data.title}</h4>
+										<div class="date">
+											<FormattedDate date={post.data.pubDate} />
+										</div>
+										<p class="excerpt">
+											{post.data.description}
+										</p>
+									</div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+
+        <nav class="pagination" aria-label="Pagination">
+          {page.url.prev && <a href={page.url.prev}>← Newer</a>}
+          <span>Page {page.currentPage} of {page.lastPage}</span>
+          {page.url.next && <a href={page.url.next}>Older →</a>}
+        </nav>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

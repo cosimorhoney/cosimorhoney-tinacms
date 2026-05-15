@@ -1,0 +1,13 @@
+---
+// src/components/StyledText.astro
+import { renderStyledText } from '../utils/styledTextParser';
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const html = renderStyledText(text);
+---
+
+<Fragment set:html={html} />

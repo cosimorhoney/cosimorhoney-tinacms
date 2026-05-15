@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+
+const pages = await getCollection("page");
+---
+
+<html>
+<head><title>Debug</title></head>
+<body>
+<h1>All Pages in Collection:</h1>
+<pre>{JSON.stringify(pages.map(p => ({
+  id: p.id,
+  slug: p.slug,
+  filename: p.data._sys?.filename
+})), null, 2)}</pre>
+</body>
+</html>
