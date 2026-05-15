@@ -39,26 +39,6 @@
   "siteTitle": "Cosimo Rhoney Productions",
   "siteTagline": "Filmmaker | Photographer | Musician",
   "siteDescription": "",
-  "navigation": [
-    {
-      "title": "Home",
-      "link": "/"
-    },
-    {
-      "title": "About",
-      "link": "#"
-    }
-  ],
-  "footerLinks": [
-    {
-      "title": "Home",
-      "link": "/"
-    },
-    {
-      "title": "About",
-      "link": "#"
-    }
-  ],
   "html": "",
   "social": [
     {
