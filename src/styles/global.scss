@@ -228,10 +228,12 @@ section.section-wrapper.max-width-full {
   align-content: end;
   padding: 0;
   width: 100%;
-  min-height: clamp(288px, 40vw, 40vw);
+  height: 42vw;
+  min-height: 400px;
   .hero-content h1 {
     margin: 0;
     font-size: clamp(1.8rem, 0.8421vw + 1.6316rem, 2rem);
+    line-height: 1;
   }
 }
 
