@@ -1024,6 +1024,10 @@ export default defineConfig({
                   label: item?.title || "Navigation Item",
                 };
               },
+              defaultItem: {
+                title: "",
+                link: "",
+              },
             },
             fields: [
               {
@@ -1053,6 +1057,10 @@ export default defineConfig({
                 return {
                   label: item?.title || "Link",
                 };
+              },
+              defaultItem: {
+                title: "",
+                link: "",
               },
             },
             fields: [

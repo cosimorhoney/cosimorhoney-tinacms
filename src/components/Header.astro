@@ -19,7 +19,7 @@ import IconLink from "./react/IconLink";
 	  </a>
 		<div class="header-links" tabindex="1" aria-label="Navigation Menu">
 			{
-				config.navigation.map((nav) => (
+				(config.navigation ?? []).map((nav) => (
 					<HeaderLink href={nav.link} className={nav.classes}>
 						{nav.title}
 					</HeaderLink>

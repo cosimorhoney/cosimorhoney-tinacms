@@ -30,7 +30,7 @@ const today = new Date();
 		</div>
 		<div class="footer-links">
 			{
-				config.footerLinks.map((link) => (
+				(config.footerLinks ?? []).map((link) => (
 					<HeaderLink href={link.link} className={link.classes}>
 						{link.title}
 					</HeaderLink>
