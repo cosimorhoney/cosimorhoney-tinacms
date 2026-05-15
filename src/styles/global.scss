@@ -114,10 +114,10 @@ header .header-group-logo {
 }
 
 header .header-group-text h2 {
+  opacity: 0;
   margin: 0;
   margin: 3px 2px 0;
   width: 100px;
-  overflow: hidden;
   color: white;
   font-size: 11px !important;
   line-height: 0.89;
@@ -125,7 +125,6 @@ header .header-group-text h2 {
   text-box-trim: trim-both;
   text-transform: uppercase;
   @supports (animation-timeline: scroll()) {
-    opacity: 0;
     animation-timeline: scroll();
     animation-timing-function: linear;
     animation-fill-mode: both;
@@ -158,9 +157,6 @@ header .header-links a {
   text-transform: uppercase;
 }
 
-header .header-links a:hover,
-header .header-links a:focus {
-}
 header .header-links a.active {
   opacity: 0.7;
 }
@@ -235,6 +231,7 @@ section.section-wrapper.max-width-full {
   min-height: clamp(288px, 40vw, 40vw);
   .hero-content h1 {
     margin: 0;
+    font-size: clamp(1.8rem, 0.8421vw + 1.6316rem, 2rem);
   }
 }
 
@@ -244,8 +241,11 @@ section.section-wrapper.max-width-full {
   right: 0;
   left: 0;
   z-index: -1;
-  width: clamp(720px, 100%, 100%);
+  width: 100%;
+  max-width: 100%;
   height: auto;
+  min-height: 386px;
+  object-fit: cover;
   object-position: center;
 }
 
