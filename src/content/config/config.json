@@ -43,6 +43,10 @@
     {
       "title": "Films",
       "link": "/films"
+    },
+    {
+      "title": "Music",
+      "link": "/music"
     }
   ],
   "html": "",
